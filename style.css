@@ -1,0 +1,280 @@
+/* 基础样式 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #faf8ef;
+    color: #776e65;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 头部样式 */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.score-container {
+    position: relative;
+    background: #bbada0;
+    padding: 10px 20px;
+    border-radius: 6px;
+    color: white;
+    text-align: center;
+    min-width: 100px;
+}
+
+.score-title {
+    font-size: 14px;
+    color: #eee4da;
+}
+
+#score {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* 游戏容器样式 */
+.game-container {
+    position: relative;
+    background: #bbada0;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.grid-container {
+    position: relative;
+    z-index: 1;
+}
+
+.grid-row {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.grid-row:last-child {
+    margin-bottom: 0;
+}
+
+.grid-cell {
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+    background: rgba(238, 228, 218, 0.35);
+    border-radius: 3px;
+}
+
+.grid-cell:last-child {
+    margin-right: 0;
+}
+
+/* 方块样式 */
+.tile-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+}
+
+.tile {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 3px;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 100px;
+    transition: all 0.15s ease;
+}
+
+/* 不同数字方块的颜色 */
+.tile-2 {
+    background: #eee4da;
+    color: #776e65;
+}
+
+.tile-4 {
+    background: #ede0c8;
+    color: #776e65;
+}
+
+.tile-8 {
+    background: #f2b179;
+    color: #f9f6f2;
+}
+
+.tile-16 {
+    background: #f59563;
+    color: #f9f6f2;
+}
+
+.tile-32 {
+    background: #f67c5f;
+    color: #f9f6f2;
+}
+
+.tile-64 {
+    background: #f65e3b;
+    color: #f9f6f2;
+}
+
+.tile-128 {
+    background: #edcf72;
+    color: #f9f6f2;
+    font-size: 35px;
+}
+
+.tile-256 {
+    background: #edcc61;
+    color: #f9f6f2;
+    font-size: 35px;
+}
+
+.tile-512 {
+    background: #edc850;
+    color: #f9f6f2;
+    font-size: 35px;
+}
+
+.tile-1024 {
+    background: #edc53f;
+    color: #f9f6f2;
+    font-size: 30px;
+}
+
+.tile-2048 {
+    background: #edc22e;
+    color: #f9f6f2;
+    font-size: 30px;
+}
+
+/* 按钮样式 */
+button {
+    background: #8f7a66;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #7f6a56;
+}
+
+/* 游戏消息样式 */
+.game-message {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(238, 228, 218, 0.9);
+    z-index: 100;
+    text-align: center;
+    animation: fade-in 0.8s ease;
+}
+
+.game-message.game-over {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-message p {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* 游戏说明样式 */
+.game-explanation {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 520px) {
+    .container {
+        padding: 10px;
+    }
+
+    .grid-cell, .tile {
+        width: 70px;
+        height: 70px;
+        margin-right: 10px;
+    }
+
+    .grid-row {
+        margin-bottom: 10px;
+    }
+
+    .tile {
+        font-size: 30px;
+        line-height: 70px;
+    }
+
+    .tile-128, .tile-256, .tile-512 {
+        font-size: 25px;
+    }
+
+    .tile-1024, .tile-2048 {
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+}
+
+/* 动画 */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.tile-new {
+    animation: appear 0.2s ease;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
